@@ -1,0 +1,33 @@
+{
+    "name": "czechphp/invalid-document",
+    "type": "library",
+    "description": "Library for checking if the document is registered as invalid in the database of Ministry of the Interior of the Czech Republic",
+    "keywords": ["invalid document", "neplatnost dokladů", "Ministry of the Interior of the Czech Republic", "Ministerstvo vnitra České republiky"],
+    "license": "MIT",
+    "require": {
+        "php": "^7.1",
+        "ext-simplexml": "*",
+        "psr/http-message": "^1.0",
+        "psr/http-client": "^1.0",
+        "psr/http-factory": "^1.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^7.0"
+    },
+    "authors": [
+        {
+            "name": "Lukáš Mencl",
+            "email": "tetra.jinak@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Czechphp\\InvalidDocument\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Czechphp\\InvalidDocument\\Tests\\": "tests/"
+        }
+    }
+}

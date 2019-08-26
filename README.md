@@ -1,5 +1,8 @@
 # InvalidDocument
 
+[![Build Status](https://travis-ci.com/czechphp/invalid-document.svg?branch=master)](https://travis-ci.com/czechphp/invalid-document)
+[![codecov](https://codecov.io/gh/czechphp/invalid-document/branch/master/graph/badge.svg)](https://codecov.io/gh/czechphp/invalid-document)
+
 Library for checking if the document is registered as invalid in the database of Ministry of the Interior of the Czech Republic.
 [Official information (en)](https://www.mvcr.cz/clanek/neplatne-doklady-ve-formatu-xml-en.aspx)
 

@@ -1,15 +1,20 @@
-# InvalidDocument
+# Invalidity check of documents in the database of Ministry of the Interior of the Czech Republic
+
+> Czech: Kontrola neplatnosti dokladů u Ministerstva vnitra České republiky. [Oficiální informace (cs)](https://www.mvcr.cz/clanek/neplatne-doklady-ve-formatu-xml.aspx)
 
 [![Build Status](https://travis-ci.com/czechphp/invalid-document.svg?branch=master)](https://travis-ci.com/czechphp/invalid-document)
 [![codecov](https://codecov.io/gh/czechphp/invalid-document/branch/master/graph/badge.svg)](https://codecov.io/gh/czechphp/invalid-document)
 
-Library for checking if the document is registered as invalid in the database of Ministry of the Interior of the Czech Republic.
+Invalidity check of documents in the database of Ministry of the Interior of the Czech Republic.
 [Official information (en)](https://www.mvcr.cz/clanek/neplatne-doklady-ve-formatu-xml-en.aspx)
 
-**Czech:** Knihovna pro kontrolu neplatnosti dokladů u Ministerstva vnitra České republiky.
-[Oficiální informace (cs)](https://www.mvcr.cz/clanek/neplatne-doklady-ve-formatu-xml.aspx)
+It's possible to check following document numbers:
+* Identification card (Občanský průkaz)
+* Centrally issued passport (Centrálně vydávaný cestovní pas)
+* Regionally issued passport (Cestovní pas vydaný okresním úřadem)
+* Gun license (Zbrojní průkaz)
 
-## Instalation
+## Installation
 
 Install the latest version with
 
@@ -17,11 +22,11 @@ Install the latest version with
 $ composer require czechphp/invalid-document
 ```
 
-Choose and install your 
+Choose and install 
 [PSR-18 HTTP Client implementation](https://packagist.org/providers/psr/http-client-implementation) and
 [PSR-17 HTTP Factory implementation](https://packagist.org/providers/psr/http-factory-implementation).
 
-Or just install recommended 
+Or install suggested 
 [kriswallsmith/buzz](https://packagist.org/packages/kriswallsmith/buzz) and 
 [nyholm/psr7](https://packagist.org/packages/nyholm/psr7) with following
 
@@ -43,12 +48,13 @@ $invalidDocument = new InvalidDocument($client, $requestFactory);
 $message = $invalidDocument->get(InvalidDocument::IDENTIFICATION_CARD, '123456', 'AB');
 
 if (true === $message->isRegistered()) {
-    // the document is absolutely not valid
-    // for example the document might be stolen or just replaced with new one and this one was invalidated
+    // the document is in registry of invalid documents
+    // for example the document might be replaced with new one and this one was invalidated
 }
 
 if (false === $message->isRegistered()) {
-    // the document is not kept in the registry of invalid documents
-    // for example typo in the document number may return false
+    // the document is not in the registry of invalid documents
+    // this does not mean that this document is valid
+    // Ministry of the Interior of the Czech Republic did not specifically declared this document as invalid
 }
 ```

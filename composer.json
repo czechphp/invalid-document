@@ -1,7 +1,7 @@
 {
     "name": "czechphp/invalid-document",
     "type": "library",
-    "description": "Library for checking if the document is registered as invalid in the database of Ministry of the Interior of the Czech Republic",
+    "description": "Invalidity check of documents in the database of Ministry of the Interior of the Czech Republic",
     "keywords": ["invalid document", "neplatnost dokladů", "Ministry of the Interior of the Czech Republic", "Ministerstvo vnitra České republiky"],
     "license": "MIT",
     "require": {

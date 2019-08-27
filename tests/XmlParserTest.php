@@ -105,4 +105,20 @@ TXT;
 
         $parser->parse($content);
     }
+
+    public function testMissingContent()
+    {
+        $parser = new XmlParser();
+        $content = <<<XML
+<?xml version="1.0" ?>
+<doklady_neplatne   posl_zmena="12.8.2010"   pristi_zmeny="brief notice">
+</doklady_neplatne>
+XML;
+
+        $this->expectException(ServerErrorException::class);
+        $this->expectExceptionMessage("Unable to parse response. Content:\n" . $content);
+
+        $parser->parse($content);
+    }
+
 }

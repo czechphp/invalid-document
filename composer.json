@@ -5,14 +5,14 @@
     "keywords": ["invalid document", "neplatnost dokladů", "Ministry of the Interior of the Czech Republic", "Ministerstvo vnitra České republiky"],
     "license": "MIT",
     "require": {
-        "php": "^7.1",
+        "php": ">=7.4",
         "ext-simplexml": "*",
         "psr/http-message": "^1.0",
         "psr/http-client": "^1.0",
         "psr/http-factory": "^1.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "^7.0"
+        "phpunit/phpunit": "^9.5"
     },
     "authors": [
         {
@@ -29,10 +29,5 @@
         "psr-4": {
             "Czechphp\\InvalidDocument\\Tests\\": "tests/"
         }
-    },
-    "scripts": {
-        "test": [
-            "phpunit"
-        ]
     }
 }

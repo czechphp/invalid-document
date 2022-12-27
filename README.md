@@ -26,10 +26,6 @@ Choose and install
 [PSR-18 HTTP Client implementation](https://packagist.org/providers/psr/http-client-implementation) and
 [PSR-17 HTTP Factory implementation](https://packagist.org/providers/psr/http-factory-implementation).
 
-Or install suggested 
-[kriswallsmith/buzz](https://packagist.org/packages/kriswallsmith/buzz) and 
-[nyholm/psr7](https://packagist.org/packages/nyholm/psr7) with following
-
 ```
 $ composer require czechphp/invalid-document kriswallsmith/buzz nyholm/psr7
 ```

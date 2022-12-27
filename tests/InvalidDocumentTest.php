@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Czechphp\InvalidDocument\Tests;
 
 use Czechphp\InvalidDocument\Exception\ServerErrorException;
@@ -14,9 +16,9 @@ use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\StreamInterface;
 
-class InvalidDocumentTest extends TestCase
+final class InvalidDocumentTest extends TestCase
 {
-    public function testSuccess()
+    public function testSuccess(): void
     {
         $requestFactory = $this->createMock(RequestFactoryInterface::class);
         $request = $this->createMock(RequestInterface::class);
@@ -37,7 +39,7 @@ class InvalidDocumentTest extends TestCase
         $this->assertEquals($message, $invalidDocument->get(InvalidDocument::IDENTIFICATION_CARD, '', ''));
     }
 
-    public function testClientException()
+    public function testClientException(): void
     {
         $requestFactory = $this->createMock(RequestFactoryInterface::class);
         $request = $this->createMock(RequestInterface::class);

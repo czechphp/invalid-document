@@ -1,0 +1,5 @@
+* text=auto
+
+# ignore for dist
+/tests export-ignore
+/phpunit.xml.dist export-ignore

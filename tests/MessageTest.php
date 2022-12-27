@@ -1,22 +1,24 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Czechphp\InvalidDocument\Tests;
 
 use Czechphp\InvalidDocument\Message\Message;
 use DateTime;
 use PHPUnit\Framework\TestCase;
 
-class MessageTest extends TestCase
+final class MessageTest extends TestCase
 {
-    public function testCanCreateAndRead()
+    public function testCanCreateAndRead(): void
     {
         $number = '1';
         $serialNumber = 'A';
-        $documentType = 1;
+        $documentType = '1';
         $registered = true;
-        $registeredAt = new DateTime('');
-        $updatedAt = new DateTime('');
-        $serviceUpdatedAt = new DateTime('');
+        $registeredAt = new DateTime();
+        $updatedAt = new DateTime();
+        $serviceUpdatedAt = new DateTime();
         $serviceMessage = 'message';
 
         $message = new Message($number, $serialNumber, $documentType, $registered, $registeredAt, $updatedAt, $serviceUpdatedAt, $serviceMessage);

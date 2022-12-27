@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Czechphp\InvalidDocument\Tests;
 
 use Czechphp\InvalidDocument\Exception\InvalidArgumentException;
@@ -10,9 +12,9 @@ use DateTime;
 use DateTimeZone;
 use PHPUnit\Framework\TestCase;
 
-class XmlParserTest extends TestCase
+final class XmlParserTest extends TestCase
 {
-    public function testValid()
+    public function testValid(): void
     {
         $parser = new XmlParser();
         $content = <<<XML
@@ -36,7 +38,7 @@ XML;
         $this->assertEquals($expected, $parser->parse($content));
     }
 
-    public function testInvalid()
+    public function testInvalid(): void
     {
         $parser = new XmlParser();
         $content = <<<XML
@@ -61,7 +63,7 @@ XML;
         $this->assertEquals($expected, $parser->parse($content));
     }
 
-    public function testInvalidRequest()
+    public function testInvalidRequest(): void
     {
         $parser = new XmlParser();
         $content = <<<XML
@@ -77,7 +79,7 @@ XML;
         $parser->parse($content);
     }
 
-    public function testServerError()
+    public function testServerError(): void
     {
         $parser = new XmlParser();
         $content = <<<XML
@@ -93,7 +95,7 @@ XML;
         $parser->parse($content);
     }
 
-    public function testInvalidResponse()
+    public function testInvalidResponse(): void
     {
         $parser = new XmlParser();
         $content = <<<TXT
@@ -106,7 +108,7 @@ TXT;
         $parser->parse($content);
     }
 
-    public function testMissingContent()
+    public function testMissingContent(): void
     {
         $parser = new XmlParser();
         $content = <<<XML
@@ -120,5 +122,4 @@ XML;
 
         $parser->parse($content);
     }
-
 }

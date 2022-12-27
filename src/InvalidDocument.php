@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Czechphp\InvalidDocument;
 
 use Czechphp\InvalidDocument\Exception\InvalidArgumentException;
@@ -37,25 +39,10 @@ final class InvalidDocument
      */
     public const GUN_LICENSE = 6;
 
-    /**
-     * @var ClientInterface
-     */
-    private $client;
-
-    /**
-     * @var RequestFactoryInterface
-     */
-    private $requestFactory;
-
-    /**
-     * @var ParserInterface
-     */
-    private $responseParser;
-
-    /**
-     * @var string
-     */
-    private $uri;
+    private ClientInterface $client;
+    private RequestFactoryInterface $requestFactory;
+    private ParserInterface $responseParser;
+    private string $uri;
 
     public function __construct(ClientInterface $client, RequestFactoryInterface $requestFactory, ParserInterface $responseParser = null, string $uri = self::URI)
     {
@@ -75,7 +62,7 @@ final class InvalidDocument
      * @throws InvalidArgumentException
      * @throws ServerErrorException
      */
-    public function get(int $documentType, string $number, string $serialNumber = null) : MessageInterface
+    public function get(int $documentType, string $number, ?string $serialNumber = null): MessageInterface
     {
         $request = $this->requestFactory->createRequest('GET', $this->getUri($documentType, $number, $serialNumber));
 
@@ -88,7 +75,7 @@ final class InvalidDocument
         return $this->responseParser->parse($response->getBody()->getContents());
     }
 
-    private function getUri(int $documentType, string $number, string $serialNumber = null) : string
+    private function getUri(int $documentType, string $number, ?string $serialNumber = null): string
     {
         return sprintf('%s?%s', $this->uri, http_build_query([
             'dotaz' => $number . $serialNumber,

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Czechphp\InvalidDocument\Parser;
 
 use Czechphp\InvalidDocument\Exception\InvalidArgumentException;
@@ -16,7 +18,7 @@ final class XmlParser implements ParserInterface
     private const NO = 'ne';
     private const NULL = '-';
 
-    public function parse(string $content) : MessageInterface
+    public function parse(string $content): MessageInterface
     {
         $xml = @simplexml_load_string($content);
 

@@ -1,50 +1,21 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Czechphp\InvalidDocument\Message;
 
 use DateTimeInterface;
 
 final class Message implements MessageInterface
 {
-    /**
-     * @var string
-     */
-    private $number;
-
-    /**
-     * @var string|null
-     */
-    private $serialNumber;
-
-    /**
-     * @var string
-     */
-    private $documentType;
-
-    /**
-     * @var bool
-     */
-    private $registered;
-
-    /**
-     * @var DateTimeInterface|null
-     */
-    private $registeredAt;
-
-    /**
-     * @var DateTimeInterface
-     */
-    private $updatedAt;
-
-    /**
-     * @var DateTimeInterface
-     */
-    private $serviceUpdatedAt;
-
-    /**
-     * @var string
-     */
-    private $serviceMessage;
+    private string $number;
+    private ?string $serialNumber;
+    private string $documentType;
+    private bool $registered;
+    private ?DateTimeInterface $registeredAt;
+    private DateTimeInterface $updatedAt;
+    private DateTimeInterface $serviceUpdatedAt;
+    private string $serviceMessage;
 
     public function __construct(string $number, ?string $serialNumber, string $documentType, bool $registered, ?DateTimeInterface $registeredAt, DateTimeInterface $updatedAt, DateTimeInterface $serviceUpdatedAt, string $serviceMessage)
     {
@@ -58,42 +29,42 @@ final class Message implements MessageInterface
         $this->serviceMessage = $serviceMessage;
     }
 
-    public function getNumber() : string
+    public function getNumber(): string
     {
         return $this->number;
     }
 
-    public function getSerialNumber() : ?string
+    public function getSerialNumber(): ?string
     {
         return $this->serialNumber;
     }
 
-    public function getDocumentType() : string
+    public function getDocumentType(): string
     {
         return $this->documentType;
     }
 
-    public function isRegistered() : bool
+    public function isRegistered(): bool
     {
         return $this->registered;
     }
 
-    public function getRegisteredAt() : ?DateTimeInterface
+    public function getRegisteredAt(): ?DateTimeInterface
     {
         return $this->registeredAt;
     }
 
-    public function getUpdatedAt() : DateTimeInterface
+    public function getUpdatedAt(): DateTimeInterface
     {
         return $this->updatedAt;
     }
 
-    public function getServiceUpdatedAt() : DateTimeInterface
+    public function getServiceUpdatedAt(): DateTimeInterface
     {
         return $this->serviceUpdatedAt;
     }
 
-    public function getServiceMessage() : string
+    public function getServiceMessage(): string
     {
         return $this->serviceMessage;
     }

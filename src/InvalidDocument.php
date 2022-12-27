@@ -53,18 +53,12 @@ final class InvalidDocument
     }
 
     /**
-     * @param int $documentType
-     * @param string $number
-     * @param string|null $serialNumber
-     *
-     * @return MessageInterface
-     *
      * @throws InvalidArgumentException
      * @throws ServerErrorException
      */
-    public function get(int $documentType, string $number, ?string $serialNumber = null): MessageInterface
+    public function get(int $documentType, string $number): MessageInterface
     {
-        $request = $this->requestFactory->createRequest('GET', $this->getUri($documentType, $number, $serialNumber));
+        $request = $this->requestFactory->createRequest('GET', $this->getUri($documentType, $number));
 
         try {
             $response = $this->client->sendRequest($request);
@@ -75,10 +69,10 @@ final class InvalidDocument
         return $this->responseParser->parse($response->getBody()->getContents());
     }
 
-    private function getUri(int $documentType, string $number, ?string $serialNumber = null): string
+    private function getUri(int $documentType, string $number): string
     {
         return sprintf('%s?%s', $this->uri, http_build_query([
-            'dotaz' => $number . $serialNumber,
+            'dotaz' => $number,
             'doklad' => $documentType,
         ]));
     }

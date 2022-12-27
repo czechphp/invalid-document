@@ -25,10 +25,6 @@ Choose and install
 [PSR-18 HTTP Client implementation](https://packagist.org/providers/psr/http-client-implementation) and
 [PSR-17 HTTP Factory implementation](https://packagist.org/providers/psr/http-factory-implementation).
 
-```
-$ composer require czechphp/invalid-document kriswallsmith/buzz nyholm/psr7
-```
-
 ## Basic usage
 ```php
 <?php
@@ -40,7 +36,7 @@ $requestFactory = null; // anything that implements PSR-17 HTTP Factory
 
 $invalidDocument = new InvalidDocument($client, $requestFactory);
 
-$message = $invalidDocument->get(InvalidDocument::IDENTIFICATION_CARD, '123456', 'AB');
+$message = $invalidDocument->get(InvalidDocument::IDENTIFICATION_CARD, '123456AB');
 
 if (true === $message->isRegistered()) {
     // the document is in registry of invalid documents

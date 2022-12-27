@@ -36,7 +36,7 @@ final class InvalidDocumentTest extends TestCase
 
         $invalidDocument = new InvalidDocument($client, $requestFactory, $parser);
 
-        $this->assertEquals($message, $invalidDocument->get(InvalidDocument::IDENTIFICATION_CARD, '', ''));
+        $this->assertEquals($message, $invalidDocument->get(InvalidDocument::IDENTIFICATION_CARD, '123AB'));
     }
 
     public function testClientException(): void
@@ -54,6 +54,6 @@ final class InvalidDocumentTest extends TestCase
 
         $this->expectException(ServerErrorException::class);
 
-        $invalidDocument->get(InvalidDocument::IDENTIFICATION_CARD, '');
+        $invalidDocument->get(InvalidDocument::IDENTIFICATION_CARD, '123AB');
     }
 }

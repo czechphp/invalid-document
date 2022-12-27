@@ -2,8 +2,7 @@
 
 > Czech: Kontrola neplatnosti dokladů u Ministerstva vnitra České republiky. [Oficiální informace (cs)](https://www.mvcr.cz/clanek/neplatne-doklady-ve-formatu-xml.aspx)
 
-[![Build Status](https://travis-ci.com/czechphp/invalid-document.svg?branch=master)](https://travis-ci.com/czechphp/invalid-document)
-[![codecov](https://codecov.io/gh/czechphp/invalid-document/branch/master/graph/badge.svg)](https://codecov.io/gh/czechphp/invalid-document)
+![Build Status](https://github.com/czechphp/invalid-document/actions/workflows//php.yml/badge.svg)
 
 Invalidity check of documents in the database of Ministry of the Interior of the Czech Republic.
 [Official information (en)](https://www.mvcr.cz/clanek/neplatne-doklady-ve-formatu-xml-en.aspx)

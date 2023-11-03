@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Czechphp\InvalidDocument;
 
-use Czechphp\InvalidDocument\Exception\InvalidArgumentException;
 use Czechphp\InvalidDocument\Exception\ServerErrorException;
 use Czechphp\InvalidDocument\Message\MessageInterface;
 use Czechphp\InvalidDocument\Parser\XmlParser;
@@ -15,30 +14,8 @@ use Psr\Http\Message\RequestFactoryInterface;
 use function http_build_query;
 use function sprintf;
 
-final class InvalidDocument
+final class InvalidDocument implements InvalidDocumentInterface
 {
-    public const URI = 'https://aplikace.mvcr.cz/neplatne-doklady/Doklady.aspx';
-
-    /**
-     * Občanský průkaz
-     */
-    public const IDENTIFICATION_CARD = 0;
-
-    /**
-     * Centrálně vydávaný cestovní pas
-     */
-    public const CENTRALLY_ISSUED_PASSPORT = 4;
-
-    /**
-     * Cestovní pas vydaný okresním úřadem
-     */
-    public const REGIONALLY_ISSUED_PASSPORT = 5;
-
-    /**
-     * Zbrojní průkaz
-     */
-    public const GUN_LICENSE = 6;
-
     private ClientInterface $client;
     private RequestFactoryInterface $requestFactory;
     private ParserInterface $responseParser;
@@ -53,8 +30,7 @@ final class InvalidDocument
     }
 
     /**
-     * @throws InvalidArgumentException
-     * @throws ServerErrorException
+     * @inheritDoc
      */
     public function get(int $documentType, string $number): MessageInterface
     {

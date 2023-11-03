@@ -6,6 +6,7 @@ namespace Czechphp\InvalidDocument\Tests;
 
 use Czechphp\InvalidDocument\Exception\ServerErrorException;
 use Czechphp\InvalidDocument\InvalidDocument;
+use Czechphp\InvalidDocument\InvalidDocumentInterface;
 use Czechphp\InvalidDocument\Message\MessageInterface;
 use Czechphp\InvalidDocument\Parser\ParserInterface;
 use PHPUnit\Framework\TestCase;
@@ -36,7 +37,7 @@ final class InvalidDocumentTest extends TestCase
 
         $invalidDocument = new InvalidDocument($client, $requestFactory, $parser);
 
-        $this->assertEquals($message, $invalidDocument->get(InvalidDocument::IDENTIFICATION_CARD, '123AB'));
+        $this->assertEquals($message, $invalidDocument->get(InvalidDocumentInterface::IDENTIFICATION_CARD, '123AB'));
     }
 
     public function testClientException(): void
@@ -54,6 +55,6 @@ final class InvalidDocumentTest extends TestCase
 
         $this->expectException(ServerErrorException::class);
 
-        $invalidDocument->get(InvalidDocument::IDENTIFICATION_CARD, '123AB');
+        $invalidDocument->get(InvalidDocumentInterface::IDENTIFICATION_CARD, '123AB');
     }
 }

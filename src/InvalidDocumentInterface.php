@@ -10,7 +10,7 @@ use Czechphp\InvalidDocument\Message\MessageInterface;
 
 interface InvalidDocumentInterface
 {
-	public const URI = 'https://aplikace.mvcr.cz/neplatne-doklady/Doklady.aspx';
+	public const URI = 'https://aplikace.mv.gov.cz/neplatne-doklady/Doklady.aspx';
 
 	/**
 	 * Občanský průkaz

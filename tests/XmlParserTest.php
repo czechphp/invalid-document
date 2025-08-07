@@ -103,7 +103,7 @@ Server error
 TXT;
 
         $this->expectException(ServerErrorException::class);
-        $this->expectExceptionMessage("Unable to parse response. Content:\nServer error");
+        $this->expectExceptionMessage("Unable to parse response. Start tag expected, '<' not found. Content:\nServer error");
 
         $parser->parse($content);
     }

@@ -10,6 +10,11 @@ use Czechphp\InvalidDocument\Message\Message;
 use Czechphp\InvalidDocument\Message\MessageInterface;
 use DateTimeImmutable;
 use DateTimeZone;
+use LibXMLError;
+use function array_map;
+use function libxml_clear_errors;
+use function libxml_get_errors;
+use function libxml_use_internal_errors;
 use function simplexml_load_string;
 
 final class XmlParser implements ParserInterface
@@ -20,10 +25,21 @@ final class XmlParser implements ParserInterface
 
     public function parse(string $content): MessageInterface
     {
-        $xml = @simplexml_load_string($content);
+        try {
+            libxml_use_internal_errors(true);
 
-        if ($xml === false) {
-            throw new ServerErrorException("Unable to parse response. Content:\n" . $content);
+            $xml = simplexml_load_string($content);
+
+            if ($xml === false) {
+                throw new ServerErrorException(sprintf(
+                    "Unable to parse response. %s. Content:\n%s",
+                    implode(', ', array_map(static fn (LibXMLError $error) => trim($error->message), libxml_get_errors())),
+                    $content,
+                ));
+            }
+        } finally {
+            libxml_use_internal_errors(false);
+            libxml_clear_errors();
         }
 
         // error
